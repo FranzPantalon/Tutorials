@@ -1,0 +1,9 @@
+res://CustomSignal.tscn
+res://ToggleMotion/Godot.tscn
+res://CustomSignal/Enemy.tscn
+res://CustomSignal/LifeBar.tscn
+res://CustomSignal/Player.tscn
+res://toggle_motion.tscn
+res://ToggleMotion/Godot.gd
+res://CustomSignal/Player.gd
+res://CustomSignal/LifeBar.gd
