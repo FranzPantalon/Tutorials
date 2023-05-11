@@ -1,6 +1,6 @@
 extends Node
 
-@export var mobScene : PackedScene
+@export var mob_scene : PackedScene
 var score = 0
 
 
@@ -10,9 +10,9 @@ func _ready():
 	
 
 
-func newGame():
+func new_game():
 	score = 0
-	$HUD.updateScore(score)
+	$HUD.update_score(score)
 	
 	get_tree().call_group("mobs", "queue_free")
 	$Player.start($StartPosition.position)
@@ -21,41 +21,42 @@ func newGame():
 	
 	$StartTimer.start()
 	
-	$HUD.showMessage("Get ready...")
+	$HUD.show_message("Get ready...")
 	
 	await $StartTimer.timeout
 	$ScoreTimer.start()
 	$SpawnTimer.start()
 
 
-func gameOver():
+func game_over():
 	$ScoreTimer.stop()
 	$SpawnTimer.stop()
 	$Music.stop()
 	$DeathSound.play()
-	$HUD.showGameOver()
+	$HUD.show_game_over()
 
 
 func _on_spawn_timer_timeout():
 	
 	# Randomize spawning location
-	var mobSpawnLocation = $MobPath/MobSpawnLocation
-	mobSpawnLocation.progress_ratio = randf()		#NOTE: randf() generates a random number between 0 and 1
+	var mob_spawn_location = $MobPath/MobSpawnLocation
+	mob_spawn_location.progress_ratio = randf()		#NOTE: randf() generates a random number between 0 and 1
 	
 	# Instanciate, add and place the new mob
-	var mobInstance = mobScene.instantiate()		# instanciate a mob
-	add_child(mobInstance)		# add mob to the main
-	mobInstance.position = mobSpawnLocation.position	# place mob at spawning point
+	var mob_instance = mob_scene.instantiate()		# instanciate a mob
+	add_child(mob_instance)		# add mob to the main
+	mob_instance.position = mob_spawn_location.position	# place mob at spawning point
 	
-	var direction = mobSpawnLocation.rotation + PI / 2
+	var direction = mob_spawn_location.rotation + PI / 2
 	direction += randf_range(-PI/4 , PI/4)
-	mobInstance.rotation = direction
+	mob_instance.rotation = direction
 	
-	var velocity = Vector2(randf_range(mobInstance.minSpeed , mobInstance.maxSpeed) , 0)
-	mobInstance.linear_velocity = velocity.rotated(direction)
+	var velocity = Vector2(randf_range(mob_instance.min_speed , mob_instance.max_speed) , 0)
+	mob_instance.linear_velocity = velocity.rotated(direction)
 
 
 func _on_score_timer_timeout():
 	score += 1
-	$HUD.updateScore(score)
+	$HUD.update_score(score)
 	
+

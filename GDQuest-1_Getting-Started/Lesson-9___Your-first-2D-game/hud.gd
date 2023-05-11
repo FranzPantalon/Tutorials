@@ -1,20 +1,20 @@
 extends CanvasLayer
 
-signal startGame
+signal start_game
 
 
-func updateScore(score):
+func update_score(score):
 	$ScoreLabel.text = str(score)
 
 
-func showMessage(text):
+func show_message(text):
 	$MessageLabel.text = text
 	$MessageLabel.show()
 	$Countdown.start()
 
 
-func showGameOver():
-	showMessage("GaMe OvEr")
+func show_game_over():
+	show_message("GaMe OvEr")
 	await $Countdown.timeout
 	$MessageLabel.text = "DoDgE tHe CrEePs !"
 	$MessageLabel.show()
@@ -24,7 +24,7 @@ func showGameOver():
 
 func _on_button_pressed():
 	$Button.hide()
-	emit_signal("startGame")	
+	emit_signal("start_game")	
 
 
 func _on_countdown_timeout():

@@ -18,7 +18,7 @@ animations = [{
 "texture": ExtResource("2_bulqm")
 }],
 "loop": true,
-"name": &"animFlying",
+"name": &"fly",
 "speed": 5.0
 }, {
 "frames": [{
@@ -29,7 +29,7 @@ animations = [{
 "texture": ExtResource("4_ofs4b")
 }],
 "loop": true,
-"name": &"animSwimming",
+"name": &"swim",
 "speed": 5.0
 }, {
 "frames": [{
@@ -40,7 +40,7 @@ animations = [{
 "texture": ExtResource("6_qijsg")
 }],
 "loop": true,
-"name": &"animWalking",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -56,8 +56,7 @@ script = ExtResource("1_uw6bc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_1y32e")
-animation = &"animFlying"
-frame_progress = 0.981579
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, 0)

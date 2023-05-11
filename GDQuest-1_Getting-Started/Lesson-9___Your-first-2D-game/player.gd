@@ -3,12 +3,12 @@ extends Area2D
 signal hit
 
 @export var speed = 400.0		# px/s
-var screenSize = Vector2.ZERO
+var screen_size = Vector2.ZERO
 
 
 func _ready():
 	hide()
-	screenSize = get_viewport_rect().size
+	screen_size = get_viewport_rect().size
 
 
 func _process(delta):
@@ -33,15 +33,15 @@ func _process(delta):
 	position += direction * speed * delta
 	
 	# Clamp position to the game window's borders
-	position.x = clamp(position.x, 0, screenSize.x)
-	position.y = clamp(position.y, 0, screenSize.y)
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
 	
 	# Set orientation of sprite, flip as applicable, and offset collision mask onto character's head
 	if direction.x != 0:
-		$AnimatedSprite2D.animation = "animHorizontal"
+		$AnimatedSprite2D.animation = "right"
 		$AnimatedSprite2D.flip_h = direction.x < 0
 	elif  direction.y != 0:
-		$AnimatedSprite2D.animation = "animVertical"
+		$AnimatedSprite2D.animation = "up"
 		if direction.y > 0:
 			$AnimatedSprite2D.flip_v = true
 			$AnimatedSprite2D.offset.y = -27

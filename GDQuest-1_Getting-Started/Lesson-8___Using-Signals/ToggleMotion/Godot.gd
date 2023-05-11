@@ -15,7 +15,6 @@ func _process(delta):
 
 
 func _on_button_pressed():
-#	pass
 	set_process(not is_processing() )
 
 
